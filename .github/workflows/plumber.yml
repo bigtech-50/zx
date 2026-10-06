@@ -1,0 +1,21 @@
+# Managed by the Plumber platform: onboarding wrote this file and unboarding deletes it.
+name: Plumber
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  plumber:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: getplumber/plumber@fb943e4efba61cf7b0a0c56f6648710a7453519b # v0.5.20
+        with:
+          platform: https://thibaud.r2devops.tech
